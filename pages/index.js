@@ -3,8 +3,27 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [pickupLine, setPickupLine] = useState("");
+  const [prevPickup, setPrevPickup] = useState();
   const [result, setResult] = useState();
+
+  function getRank() {
+    if(result > 900){
+      return "GIGA CHAD"
+    }
+    else if(result > 750){
+      return "Sigma male"
+    }
+    else if(result > 500){
+      return "Mid-rizzer"
+    }
+    else if(result > 250){
+      return "BOTTOM G"
+    }
+    else{
+      return "simp"
+    }
+  }
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -14,7 +33,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ pickup_line: pickupLine }),
       });
 
       const data = await response.json();
@@ -22,8 +41,10 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
+      console.log(data)
+      setPrevPickup(pickupLine);
       setResult(data.result);
-      setAnimalInput("");
+      setPickupLine("");
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -34,24 +55,32 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <title>Rizz Score</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Name my pet</h3>
+        <img src="/logo.png" className={styles.icon} />
+        <h3>What is your rizz score?</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
-            name="animal"
-            placeholder="Enter an animal"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
+            name="pickupline"
+            placeholder="Enter a pickup line"
+            value={pickupLine}
+            onChange={(e) => setPickupLine(e.target.value)}
           />
-          <input type="submit" value="Generate names" />
+          <input type="submit" value="Get Score" />
         </form>
+        <div className={styles.result}>{prevPickup}</div>
         <div className={styles.result}>{result}</div>
+        <div className={styles.myProgress}>
+          <div className={styles.myBar} style={{width: result/10 + '%'}}></div>
+        </div>
+        {
+          prevPickup ? <div className={styles.result}>Your rank is: {getRank()}</div> : null
+        }
+        
       </main>
     </div>
   );

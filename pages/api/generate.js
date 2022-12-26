@@ -15,11 +15,11 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const pickup_line = req.body.pickup_line || '';
+  if (pickup_line.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid pickup line",
       }
     });
     return;
@@ -27,8 +27,8 @@ export default async function (req, res) {
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      model: "text-curie-001",
+      prompt: generatePrompt(pickup_line),
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -48,15 +48,21 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+function generatePrompt(pickup_line) {
+  return `
+  Decide whether this is a good pickup line on a scale from 1-1000. (1 being the worst, 1000 being the best):
+   Lets fuck tomorrow.
+    Score:10
+  Decide whether this is a good pickup line on a scale from 1-1000. (1 being the worst, 1000 being the best):
+   I know we don't know each other very well, but I think it would be fun to grab coffee this weekend if your free.
+    Score:730
+  Decide whether this is a good pickup line on a scale from 1-1000. (1 being the worst, 1000 being the best):
+   Im really horny lets fuck tomorrow if your free.
+    Score:200
+  Decide whether this is a good pickup line on a scale from 1-1000. (1 being the worst, 1000 being the best):
+   We've been friends for awhile but I've been thinking about it and I would like to take you to dinner on Thursday if your free.
+    Score:510
+  Decide whether this is a good pickup line on a scale from 1-1000. (1 being the worst, 1000 being the best):
+   ${pickup_line}
+    Score:`;
 }
