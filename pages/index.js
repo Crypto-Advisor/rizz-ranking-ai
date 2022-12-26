@@ -74,9 +74,14 @@ export default function Home() {
         </form>
         <div className={styles.result}>{prevPickup}</div>
         <div className={styles.result}>{result}</div>
-        <div className={styles.myProgress}>
-          <div className={styles.myBar} style={{width: result/10 + '%'}}></div>
-        </div>
+        {
+          prevPickup ? 
+          <div className={styles.myProgress}>
+            <div className={styles.myBar} style={{width: result/10 + '%'}}></div>
+          </div>
+          :
+          null
+        }
         {
           prevPickup ? <div className={styles.result}>Your rank is: {getRank()}</div> : null
         }
