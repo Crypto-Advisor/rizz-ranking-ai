@@ -1,11 +1,11 @@
 @font-face {
   font-family: "ColfaxAI";
-  src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
-      format("woff2"),
+  src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2) format("woff2"),
     url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "ColfaxAI";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
@@ -13,54 +13,80 @@
   font-weight: bold;
   font-style: normal;
 }
+
 .main,
 .main input {
   font-size: 16px;
-  line-height: 24px;
-  color: #353740;
   font-family: "ColfaxAI", Helvetica, sans-serif;
 }
+
+.back {
+  margin: 0;
+  padding: 0;
+  background-image: url("./media/chad.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 60px;
+  justify-content: center;
+  height: 100vh;
 }
-.main .icon {
-  width: 34px;
-}
+
 .main h3 {
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 15vw;
   font-weight: bold;
-  color: #202123;
-  margin: 16px 0 40px;
+  background-image: linear-gradient(to right,
+      #462523 0,
+      #cb9b51 22%,
+      #f6e27a 45%,
+      #f6f2c0 50%,
+      #f6e27a 55%,
+      #cb9b51 78%,
+      #462523 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  font-weight: 900;
+  font-family: Helvetica, sans-serif;
 }
+
 .main form {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 80%;
 }
+
 .main input[type="text"] {
-  padding: 12px 16px;
-  border: 1px solid #f83bf8;
+  padding: 3vw 4vw;
   border-radius: 4px;
   margin-bottom: 24px;
-  outline-color: #f83bf8;
 }
+
 .main ::placeholder {
   color: #8e8ea0;
   opacity: 1;
 }
+
 .main input[type="submit"] {
-  padding: 12px 0;
+  padding: 3.5vw 0;
   color: #fff;
-  background-color: #f83bf8;
+  background-color: #981f0c;
   border: none;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
+  font-size: 5vw;
+  font-weight: 900;
+  border: 3vw ridge #8f1806;
 }
+
 .main .result {
   font-weight: bold;
   margin-top: 40px;
@@ -74,4 +100,120 @@
 .main .myBar {
   height: 30px;
   background-color: #f83bf8;
+}
+
+.rizz {
+  font-size: 40vw;
+  margin: 0;
+}
+
+.ai {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0 0.3em #1da9cc;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+  animation: shake 2.5s linear forwards;
+  font-size: 20vw;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+  .main h3 {
+    font-size: 10vw;
+    font-weight: bold;
+    background-image: linear-gradient(to right,
+        #462523 0,
+        #cb9b51 22%,
+        #f6e27a 45%,
+        #f6f2c0 50%,
+        #f6e27a 55%,
+        #cb9b51 78%,
+        #462523 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    font-weight: 900;
+    font-family: Helvetica, sans-serif;
+  }
+  
+  .main form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 3vw;
+  }
+  
+  .main input[type="text"] {
+    padding: 1.2vw 2vw;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    font-size: 3vw;
+  }
+  
+  .main ::placeholder {
+    color: #8e8ea0;
+    opacity: 1;
+  }
+  
+  .main input[type="submit"] {
+    color: #fff;
+    background-color: #981f0c;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 2.5vw;
+    font-weight: 900;
+    border: 3vw ridge #8f1806;
+  }
+  
+  .main .result {
+    font-weight: bold;
+    margin-top: 40px;
+  }
+  
+  .main .myProgress {
+    width: 100%;
+    background-color: rgb(224, 224, 224);
+  }
+  
+  .main .myBar {
+    height: 30px;
+    background-color: #f83bf8;
+  }
+  
+  .rizz {
+    font-size: 10vw;
+    margin: 0;
+  }
+  
+  .ai {
+    position: relative;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.3em #1da9cc;
+    user-select: none;
+    white-space: nowrap;
+    filter: blur(0.007em);
+    animation: shake 2.5s linear forwards;
+    font-size: 10vw;
+    margin: 0;
+  }
 }

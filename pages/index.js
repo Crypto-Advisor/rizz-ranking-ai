@@ -53,15 +53,14 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className = {styles.back}>
       <Head>
-        <title>Rizz Score</title>
+        <title>Test Your Rizz</title>
         <link rel="icon" href="/logo.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/logo.png" className={styles.icon} />
-        <h3>What is your rizz score?</h3>
+        <h3>TEST YOUR <span className={styles.rizz}>RIZZ</span><h1 className = {styles.ai}><span>with AI</span></h1></h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
@@ -70,7 +69,7 @@ export default function Home() {
             value={pickupLine}
             onChange={(e) => setPickupLine(e.target.value)}
           />
-          <input type="submit" value="Get Score" />
+          <input type="submit" value="CLICK HERE FOR RESULTS" />
         </form>
         <div className={styles.result}>{prevPickup}</div>
         <div className={styles.result}>{result}</div>
@@ -84,8 +83,7 @@ export default function Home() {
         }
         {
           prevPickup ? <div className={styles.result}>Your rank is: {getRank()}</div> : null
-        }
-        
+        }     
       </main>
     </div>
   );
